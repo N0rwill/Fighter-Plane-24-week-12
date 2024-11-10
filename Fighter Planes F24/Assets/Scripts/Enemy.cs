@@ -22,7 +22,8 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
         if (whatDidIHit.tag == "Player")
-        {
+        {   
+            GameObject.Find("GameManager").GetComponent<GameManager>().LoseLife(1);
             GameObject.Find("Player(Clone)").GetComponent<Player>().LoseALife();
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);

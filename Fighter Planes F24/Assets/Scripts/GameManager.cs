@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
     public GameObject cloud;
     public GameObject coin;
     private int score;
+    private int life;
 
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI lifeText;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,8 @@ public class GameManager : MonoBehaviour
         CreateSky();
         score = 0;
         scoreText.text = "Score: " + score;
+        life = 3;
+        lifeText.text= "Lives" + life;
     }
 
     // Update is called once per frame
@@ -56,4 +60,9 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
 
+    public void LoseLife(int timesGotHit)
+    {
+        life = life-timesGotHit;
+        lifeText.text="Lives:" +life;
+    }
 }
